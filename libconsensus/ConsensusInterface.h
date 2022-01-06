@@ -44,6 +44,12 @@ public:
     /// stop the consensus module
     virtual void stop() = 0;
 
+    /* imtypist notation
+     * h512 equals to 512 bits, h512s is a vector containing h512-type elements
+     * see the relationship between sealer and consensus threads https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/_images/IMG_5083.PNG
+     * https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/articles/2_required/go_through_sourcecode.html
+     */
+
     /// get sealer list
     virtual h512s sealerList() const = 0;
     virtual h512s consensusList() const = 0;

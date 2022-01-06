@@ -180,7 +180,8 @@ void ConsensusEngineBase::updateConsensusNodeList()
             for (dev::h512 node : m_sealerList)
                 s2 << node.abridged() << ",";
         }
-        s2 << "Observers:";
+        s2 << "Observers:"; 
+        /* imtypist anotation: what is the observer list? */
         dev::h512s observerList = m_blockChain->observerList();
         for (dev::h512 node : observerList)
             s2 << node.abridged() << ",";
@@ -192,7 +193,7 @@ void ConsensusEngineBase::updateConsensusNodeList()
                               << s2.str();
 
             // get all nodes
-            dev::h512s nodeList = sealerList + observerList;
+            dev::h512s nodeList = sealerList + observerList; /* imtypist anotation: is the length of sealer list is one? Only one leader.. */
             std::sort(nodeList.begin(), nodeList.end());
             if (m_blockSync->syncTreeRouterEnabled())
             {
@@ -239,7 +240,7 @@ void ConsensusEngineBase::resetConfig()
         }
         nodeNum = m_sealerList.size();
     }
-    if (nodeNum < 1)
+    if (nodeNum < 1) /* imtypist anotation: the sealer may be the consensus node? */
     {
         ENGINE_LOG(ERROR) << LOG_DESC(
             "Must set at least one pbft sealer, current number of sealers is zero");

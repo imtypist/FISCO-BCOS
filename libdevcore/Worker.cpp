@@ -39,6 +39,11 @@ void dev::setThreadName(std::string const& _n)
 
 void Worker::startWorking()
 {
+
+    /* imtypist notation
+     * I'm confused that doesn't the outer unique_lock block the inner ones?
+     */
+
     std::unique_lock<std::mutex> l(x_work);
     if (m_work)
     {

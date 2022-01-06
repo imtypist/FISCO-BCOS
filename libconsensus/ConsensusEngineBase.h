@@ -76,6 +76,10 @@ public:
                 std::shared_ptr<dev::p2p::NodeIDs> selectedNode =
                     std::make_shared<dev::p2p::NodeIDs>();
 
+                /* imtypist anotation
+                 * it seems sealers are identical to peers?
+                 */
+
                 ReadGuard l(m_sealerListMutex);
                 for (auto const& peer : m_sealerList)
                 {
@@ -146,6 +150,7 @@ public:
                 i++;
             }
         }
+        /* imtypist anotation: max parallel blocks, it degenerates to normal pbft when set to 1 */
         status_obj["allowFutureBlocks"] = m_allowFutureBlocks;
     }
 
