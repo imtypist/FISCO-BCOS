@@ -240,10 +240,10 @@ protected:
         std::shared_ptr<dev::p2p::P2PSession> session)
     {
         ssize_t peer_index = 0;
-        bool valid = isValidReq(message, session, peer_index);
+        bool valid = isValidReq(message, session, peer_index); /* imtypist notation: always false? return false directly; because it's a base class, not implemented here */
         if (valid)
         {
-            valid = decodeToRequests(req, ref(*(message->buffer())));
+            valid = decodeToRequests(req, ref(*(message->buffer()))); /* imtypist notation: call function in line 263 */
             if (valid)
                 req.setOtherField(peer_index, session->nodeID(),
                     boost::lexical_cast<std::string>(session->session()->nodeIPEndpoint()));
@@ -292,7 +292,7 @@ protected:
                           << LOG_KV("txCountLimit", m_maxBlockTransactions);
     }
 
-    dev::h512s consensusList() const override
+    dev::h512s consensusList() const override /* imtypist notation: consensus list == sealer list */
     {
         ReadGuard l(m_sealerListMutex);
         return m_sealerList;
@@ -353,7 +353,7 @@ protected:
     bool m_supportConsensusTimeAdjust = false;
     dev::sync::NodeTimeMaintenance::Ptr m_nodeTimeMaintenance;
 
-    int64_t m_maxBlockTimeOffset = 30 * 60 * 1000;
+    int64_t m_maxBlockTimeOffset = 30 * 60 * 1000; /* imtypist notation: 30min */
 };
 }  // namespace consensus
 }  // namespace dev

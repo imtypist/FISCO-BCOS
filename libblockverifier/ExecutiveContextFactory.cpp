@@ -55,6 +55,9 @@ void ExecutiveContextFactory::initExecutiveContext(
     context->setPrecompiledExecResultFactory(m_precompiledExecResultFactory);
     auto tableFactoryPrecompiled = std::make_shared<dev::precompiled::TableFactoryPrecompiled>();
     tableFactoryPrecompiled->setMemoryTableFactory(memoryTableFactory);
+
+    /* imtypist notation: set precompiled contracts' addresses */
+    
     context->setAddress2Precompiled(
         SYS_CONFIG_ADDRESS, std::make_shared<dev::precompiled::SystemConfigPrecompiled>());
     context->setAddress2Precompiled(TABLE_FACTORY_ADDRESS, tableFactoryPrecompiled);

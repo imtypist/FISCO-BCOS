@@ -41,6 +41,7 @@ include(Options)
 configure_project()
 include(CompilerSettings)
 include(Dependencies)
+# set(CMAKE_CXX_STANDARD 14)
 
 # install dependencies
 include(ProjectTBB)
@@ -62,6 +63,7 @@ include(ProjectEVMC)
 include(ProjectVRF)
 include(ProjectEVMONE)
 include(ProjectTASSL)
+include(ProjectTorch)
 
 if(USE_HSM_SDF)
   include(ProjectSDF)
